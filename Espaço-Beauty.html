@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Centro de Estética </title>
+    <style>
+        /* Reset e estilos globais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f9f3f0;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Cabeçalho */
+        header {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .slogan {
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+        
+        /* Navegação */
+        nav {
+            background-color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        nav li {
+            margin: 0 1.5rem;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #ff6b81;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #ff4757;
+        }
+        
+        /* Conteúdo principal */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        .hero {
+            background: url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        /* Botões */
+        .btn {
+            display: inline-block;
+            background-color: #ff6b81;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            margin: 0.5rem;
+        }
+        
+        .btn:hover {
+            background-color: #ff4757;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 107, 129, 0.4);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: #ff6b81;
+        }
+        
+        /* Seções */
+        .section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .section h2 {
+            color: #ff6b81;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+        
+        /* Serviços */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service {
+            background-color: #fff9f9;
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        
+        .service:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service h3 {
+            color: #ff6b81;
+            margin-bottom: 1rem;
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            color: #ff6b81;
+            margin-bottom: 1rem;
+        }
+        
+        /* Rodapé */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .social-links {
+            margin: 1.5rem 0;
+        }
+        
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #ff6b81;
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .social-btn:hover {
+            background-color: #ff4757;
+            transform: scale(1.1);
+        }
+        
+        .copyright {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 0.5rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo"> Espaço Beauty </div>
+        <div class="slogan"> Sua beleza em boas Mãos </div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#inicio"> Início </a></li>
+            <li><a href="#servicos"> Serviços </a></li>
+            <li><a href="#sobre"> Sobre Nós </a></li>
+            <li><a href="#contato"> Contato </a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <section id="inicio" class="hero">
+            <div class="hero-content">
+                <h1> Descubra o seu melhor! </h1>
+                <p> Tratamentos estéticos personalizados para realçar sua beleza natural </p>
+                <a href="#servicos" class="btn"> Nossos Serviços </a>
+                <a href="https://wa.me/5562991255302" class="btn btn-outline"> Agende Agora </a>
+            </div>
+        </section>
+        
+        <section id="servicos" class="section">
+            <h2> Nossos Serviços </h2>
+            <div class="services">
+                <div class="service">
+                    <div class="service-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h3> Tratamentos Faciais </h3>
+                    <p>Limpeza de pele, peeling, hidratação e outros tratamentos para deixar sua pele radiante.</p>
+                    <a href="#" class="btn">Saiba Mais</a>
+                </div>
+                
+                <div class="service">
+                    <div class="service-icon">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <h3>Depilação a Laser</h3>
+                    <p>Tecnologia avançada para eliminar os pelos de forma definitiva e sem dor.</p>
+                    <a href="#" class="btn">Saiba Mais</a>
+                </div>
+                
+                <div class="service">
+                    <div class="service-icon">
+                        <i class="fas fa-weight"></i>
+                    </div>
+                    <h3>Redução de Medidas</h3>
+                    <p>Combinação de técnicas para modelar o corpo e reduzir medidas de forma eficaz.</p>
+                    <a href="#" class="btn">Saiba Mais</a>
+                </div>
+                
+                <div class="service">
+                    <div class="service-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3>Massoterapia</h3>
+                    <p>Massagens relaxantes e terapêuticas para aliviar tensões e melhorar a circulação.</p>
+                    <a href="#" class="btn">Saiba Mais</a>
+                </div>
+                
+                <div class="service">
+                    <div class="service-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3>Design de Sobrancelhas </h3>
+                    <p>Realce seu olhar com o design perfeito para o formato do seu rosto.</p>
+                    <a href="#" class="btn">Saiba Mais</a>
+                </div>
+                
+                <div class="service">
+                    <div class="service-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Terapias Naturais</h3>
+                    <p>Tratamentos com produtos naturais para cuidar da sua pele e bem-estar.</p>
+                    <a href="#" class="btn">Saiba Mais</a>
+                </div>
+            </div>
+        </section>
+        
+        <section id="sobre" class="section">
+            <h2>Sobre Nós</h2>
+            <p>O Centro de Estética Beleza Natural nasceu da paixão por cuidar da beleza e autoestima de nossos clientes. Com mais de 10 anos de experiência no mercado, nossa equipe de profissionais altamente qualificados está pronta para oferecer os melhores tratamentos estéticos com segurança e eficácia.</p>
+            <p>Nossa missão é proporcionar bem-estar e realçar a beleza natural de cada pessoa, respeitando sua individualidade e necessidades específicas.</p>
+            <a href="#contato" class="btn"> Conheça Nossa Equipe </a>
+            <a href="https://www.google.com/maps/dir/-16.732545,-49.4013518/R.+Salinas+4+-+Jardim+das+Rosas,+Goi%C3%A2nia+-+GO,+74394-335/@-16.7322365,-49.4042518,17z/data=!4m19!1m8!3m7!1s0x935e58e1506ad20f:0xdf3f837f1605e297!2sR.+Salinas+4+-+Jardim+das+Rosas,+Goi%C3%A2nia+-+GO,+74394-335!3b1!8m2!3d-16.7316455!4d-49.4010258!16s%2Fg%2F11bxjfpybj!4m9!1m1!4e1!1m5!1m1!1s0x935e58e1506ad20f:0xdf3f837f1605e297!2m2!1d-49.4010258!2d-16.7316455!3e0?entry=ttu&g_ep=EgoyMDI1MDQyOS4wIKXMDSoASAFQAw%3D%3D" class="btn"> Nossa Localização </a>
+
+            <a href="https://wa.me/5562991255302" class="social-btn" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="https://instagram.com/espaco_beauty_062" class="social-btn" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+           
+
+        </section>
+        
+        <section id="contato" class="section">
+            <h2>Entre em Contato</h2>
+            <p>Estamos localizados na Rua Salinas 4 Quadra-27 lote10 Res,Buena VistaII,Goiânia,Goiás.</p>
+            <p>Telefone: (62)9 91255302</p>
+            <p>Horário de funcionamento: Segunda a Sábado, das 8h às 18h</p>
+            
+            
+           
+        </section>
+    </div>
+    
+    <footer>
+        <div class="logo">Espaço Beauty</div>
+        <p>Centro de Estética e Bem-Estar</p>
+        
+        <div class="social-links"> </div>
+        
+        <div class="copyright">
+            &copy; 2025 Espaço Beauty - Todos os direitos reservados
+        </div>
+    </footer>
+</body>
+</html>
+
