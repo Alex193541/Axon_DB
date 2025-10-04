@@ -1,0 +1,42 @@
+Exercício do dia 17/09/2025
+1.Usando a classe BufferedReader para entrada de dados, crie uma classe que receba o valor de um produto e a porcentagem de desconto, calcule e mostre o valor do desconto e o valor do produto com o desconto. 
+Observação: o valor do desconto é calculado por meio da fórmula: valor do desconto = valor do produto * percentual de desconto /100.
+
+
+  import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class produtodesc {
+
+    public static void main(String[] args) {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        try {
+            System.out.print("Valor do produto (ex.: 199.90 ou 199,90): ");
+            double valorProduto = parseNumero(br.readLine());
+
+            System.out.print("Percentual de desconto (ex.: 15 ou 15,5): ");
+            double percentual = parseNumero(br.readLine());
+
+            // Fórmula: valor do desconto = valor do produto * percentual / 100
+            double valorDesconto = valorProduto * percentual / 100.0;
+            double precoComDesconto = valorProduto - valorDesconto;
+
+            System.out.printf("Valor do desconto: R$ %.2f%n", valorDesconto);
+            System.out.printf("Preço com desconto: R$ %.2f%n", precoComDesconto);
+
+        } catch (IOException e) {
+            System.out.println("Erro na leitura dos dados: " + e.getMessage());
+        } catch (NumberFormatException e) {
+            System.out.println("Valor inválido. Use números (ex.: 123.45).");
+        }
+    }
+
+    // Aceita vírgula ou ponto como separador decimal
+    private static double parseNumero(String s) {
+        if (s == null) throw new NumberFormatException("Entrada vazia");
+        s = s.trim().replace(",", ".");
+        return Double.parseDouble(s);
+    }
+}

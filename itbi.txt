@@ -1,0 +1,31 @@
+3.O Imposto sobre a Transmissão de Bens Imóveis (ITBI) é aplicado sobre o valor de um imóvel a ser negociado. A base de cálculo do ITBI (o valor a ser considerado no cálculo) será o maior valor entre 
+o valor de transação (o valor negociado) e o valor venal de referência (fornecido pela Prefeitura). Com base nisso, elabore uma classe que receba o valor da transação, o valor venal e o percentual de imposto.
+ Após isso, encontre o maior valor e aplique o percentual sobre ele. Ao final, apresente o valor do imposto a ser pago. Observação: o valor do imposto a ser pago é calculado por meio da fórmula: 
+valor do imposto = maior valor * percentual / 100. Para entrada e saída de dados utilize a classe JOptionPane.
+
+
+
+import java.util.Scanner;
+
+public class Itbi {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Digite o valor da transação do imóvel: ");
+        double valorTransacao = sc.nextDouble();
+
+        System.out.print("Digite o valor venal de referência do imóvel: ");
+        double valorVenal = sc.nextDouble();
+
+        System.out.print("Digite o percentual do ITBI (%): ");
+        double percentual = sc.nextDouble();
+
+        double baseCalculo = Math.max(valorTransacao, valorVenal);
+        double valorImposto = baseCalculo * percentual / 100.0;
+
+        System.out.printf("Base de cálculo considerada: R$ %.2f%n", baseCalculo);
+        System.out.printf("Valor do imposto a ser pago: R$ %.2f%n", valorImposto);
+
+        sc.close();
+    }
+}

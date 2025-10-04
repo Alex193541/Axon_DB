@@ -1,0 +1,35 @@
+4.Usando a classe JOptionPane para entrada de dados, elabore uma classe que receba a nota de duas provas e de um trabalho. Calcule e mostre a média e o resultado final (aprovado ou reprovado).
+ Para calcular a média utilize a fórmula seguinte: média = (nota da prova 1 + nota da prova 2 + nota do trabalho)/3. Considere que a média mínima para aprovação é 6.
+
+
+import java.util.Scanner;
+
+public class MediaAluno {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Entrada das notas
+        System.out.print("Digite a nota da primeira prova: ");
+        double prova1 = sc.nextDouble();
+
+        System.out.print("Digite a nota da segunda prova: ");
+        double prova2 = sc.nextDouble();
+
+        System.out.print("Digite a nota do trabalho: ");
+        double trabalho = sc.nextDouble();
+
+        // Cálculo da média
+        double media = (prova1 + prova2 + trabalho) / 3;
+
+        // Verificação de aprovação
+        if (media >= 6) {
+            System.out.println("Média: " + String.format("%.2f", media));
+            System.out.println("Resultado final: Aprovado");
+        } else {
+            System.out.println("Média: " + String.format("%.2f", media));
+            System.out.println("Resultado final: Reprovado");
+        }
+
+        sc.close();
+    }
+}
